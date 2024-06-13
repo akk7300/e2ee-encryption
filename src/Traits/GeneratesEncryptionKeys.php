@@ -4,7 +4,7 @@ namespace Akk7300\E2eeEncryption\Traits;
 
 use Spatie\Crypto\Rsa\KeyPair;
 
-trait GeneratesEncryptionKeys
+trait GenerateEncryptionKeys
 {
     protected static function bootGeneratesEncryptionKeys()
     {

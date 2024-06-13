@@ -68,17 +68,17 @@ Route::middleware(['auth', 'encrypt.response'])->group(function () {
 
 ### Automatically Generating Key Pairs for New Data
 
-To automatically generate key pairs for new rows, add the GeneratesEncryptionKeys trait to your model. For example, in your User model:
+To automatically generate key pairs for new rows, add the GenerateEncryptionKeys trait to your model. For example, in your User model:
 
 ```php
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Akk7300\E2eeEncryption\Traits\GeneratesEncryptionKeys;
+use Akk7300\E2eeEncryption\Traits\GenerateEncryptionKeys;
 
 class User extends Authenticatable
 {
-    use GeneratesEncryptionKeys;
+    use GenerateEncryptionKeys;
 
     //...
 }
