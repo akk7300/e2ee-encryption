@@ -6,7 +6,7 @@ use Spatie\Crypto\Rsa\KeyPair;
 
 trait GenerateEncryptionKeys
 {
-    protected static function bootGeneratesEncryptionKeys()
+    protected static function bootGenerateEncryptionKeys()
     {
         static::creating(function ($model) {
             [$privateKey, $publicKey] = (new KeyPair())->generate();
