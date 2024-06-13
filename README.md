@@ -87,6 +87,29 @@ class User extends Authenticatable
 ### Providing Private Key to Frontend
 It's important to note that the process of providing the private key to the frontend application is not handled by this package. You, as the developer integrating this package, are responsible for securely managing and providing the private key to the frontend.
 
+#### client side javascript example code for decryption
+```php 
+const crypto = require('crypto');
+
+const privateKey = 'user private key';
+
+const encrypted = 'encrypted data';
+
+const buffer = Buffer.from(encrypted, 'base64');
+const decrypted = crypto.privateDecrypt(
+    {
+        key: privateKey,
+        passphrase: '',
+    },
+    buffer
+);
+
+const decryptedString = decrypted.toString('utf8');
+const result = JSON.parse(decryptedString);
+
+console.log(result);
+
+```
 ## Packages Used
 
 - [spatie/crypto](https://github.com/spatie/crypto) - for encryption functionality.
