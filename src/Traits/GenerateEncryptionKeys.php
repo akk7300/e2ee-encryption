@@ -11,8 +11,8 @@ trait GenerateEncryptionKeys
         static::creating(function ($model) {
             [$privateKey, $publicKey] = (new KeyPair())->generate();
 
-            $publicKeyColumn = config('e2ee_encryption.public_key_storage');
-            $privateKeyColumn = config('e2ee_encryption.private_key_storage');
+            $publicKeyColumn = config('e2ee_encryption.public_key_column');
+            $privateKeyColumn = config('e2ee_encryption.private_key_column');
 
             $model->$publicKeyColumn = $publicKey;
             $model->$privateKeyColumn = $privateKey;
