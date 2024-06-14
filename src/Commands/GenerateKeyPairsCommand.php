@@ -3,7 +3,6 @@
 namespace Akk7300\E2eeEncryption\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Spatie\Crypto\Rsa\KeyPair;
 
