@@ -42,7 +42,7 @@ You need to create these columns in your database schema manually.
 To generate key pairs for existing data in your specified database table, use the following Artisan command:
 
 ```bash
-php artisan generate:key-pairs
+php artisan encryption:generate-keys
 ```
 This command automatically creates public and private keys for existing data.
 
