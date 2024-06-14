@@ -15,7 +15,9 @@ class GenerateKeyPairsCommand extends Command
 
     public function handle()
     {
-        $tableName = Config::get('e2ee_encryption.table_name');
+        $tableName = config('e2ee_encryption.table_name');
+        $publicKeyColumn = config('e2ee_encryption.public_key_column');
+        $privateKeyColumn = config('e2ee_encryption.private_key_column');
 
         if (empty($tableName)) {
             $this->error('Please set up your table name in the config file.');
@@ -23,16 +25,16 @@ class GenerateKeyPairsCommand extends Command
             return;
         }
 
-        $records = DB::table($tableName)->whereNull('public_key')->whereNull('private_key')->get();
+        $records = DB::table($tableName)->whereNull($publicKeyColumn)->whereNull($privateKeyColumn)->get();
 
         $records->each(function ($record) use ($tableName) {
-            $keyPair = (new KeyPair())->generate();
+            [$privateKey, $publicKey] = (new KeyPair())->generate();
 
             DB::table($tableName)
                 ->where('id', $record->id)
                 ->update([
-                    'public_key' => $keyPair->getPublicKey(),
-                    'private_key' => $keyPair->getPrivateKey(),
+                    'public_key' => $publicKey,
+                    'private_key' => $privateKey,
                 ]);
         });
 
