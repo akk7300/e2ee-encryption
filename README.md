@@ -44,7 +44,17 @@ To generate key pairs for existing data in your specified database table, use th
 ```bash
 php artisan encryption:generate-keys
 ```
-This command automatically creates public and private keys for existing data.
+This command automatically creates public and private keys for existing data where the keys are currently null.
+
+### Updating a Specific Row
+
+If you want to generate key pairs for a specific row by ID, you can provide the ID as an argument to the command:
+
+```bash
+php artisan encryption:generate-keys {id}
+```
+This command generates and updates the public and private keys for the row with the specified ID.
+
 
 ### Adding Middleware for Encrypting Response
 
